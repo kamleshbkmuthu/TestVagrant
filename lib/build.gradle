@@ -9,8 +9,10 @@
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
+    id 'project-report'
 }
-
+group 'com.test'
+version '1.0-SNAPSHOT'
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
@@ -25,16 +27,7 @@ dependencies {
     
     // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
 	testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.1.1'
-    
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.3'
-    
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
-	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.13.3'
-    
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
-	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.13.3'
-    
+       
     // This dependency is exported to consumers, that is to say found on their compile classpath.
     api 'org.apache.commons:commons-math3:3.6.1'
 
@@ -45,5 +38,10 @@ dependencies {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     //useJUnitPlatform()
-    useTestNG()
+    useTestNG(){
+             useDefaultListeners = true
+             outputDirectory = file("$projectDir/AutomationReport")
+             }
+	reports.html.enabled = false
+
 }
