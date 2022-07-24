@@ -22,7 +22,7 @@ public class ApiTest extends Base {
 	public void  validateAtleastOneWicketKeeperPlays() {
 		
 		String response = d.getJsonData();
-		int actualOverseasPlayersCount = getNumberOfOverseasPlayers(response);
+		int actualOverseasPlayersCount = getNumberOfWicketKeepers(response);
 		Assert.assertTrue(actualOverseasPlayersCount>=1,"There are no wicket keepers playing in the team");
 	}
 	

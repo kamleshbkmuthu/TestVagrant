@@ -27,11 +27,11 @@ public class Base {
 		int numberOfWicketKeepers = 0;
 		for(int i=0;i<numberOfPlayers;i++) {
 			
-			System.out.println(parseResponse.getString("player.country["+i+"]"));
+			
 			if(parseResponse.getString("player.role["+i+"]").equalsIgnoreCase("Wicket-keeper")) 
 				numberOfWicketKeepers++;
 		}
-		
+		//System.out.println(numberOfWicketKeepers);
 		return numberOfWicketKeepers;
 		
 	}
